@@ -160,10 +160,13 @@
     <!-- ===================================================================== -->
     <!-- AUDIO PLAYER & FLOATING CONTROLS                                      -->
     <!-- ===================================================================== -->
-    <!-- Sumber Audio Google Drive -->
-    <audio id="bg-music" loop preload="auto">
-        <source src="https://drive.google.com/uc?export=download&id=1pbo2rnvg0olLGPvWvyMnFYiPz_kDFtEP" type="audio/mpeg">
+    <!-- Sumber Audio dari GitHub Raw -->
+    <audio id="bg-music" loop preload="auto" playsinline>
+        <source src="https://raw.githubusercontent.com/nurrohmanrifki024-lang/undangan-pernikahan/refs/heads/main/Audio.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
     </audio>
+    <!-- Fallback iframe player jika diperlukan -->
+    <div id="gdrive-audio-fallback" class="hidden"></div>
 
     <!-- Tombol Musik Melayang -->
     <div id="floating-music-container" class="fixed bottom-20 right-4 md:bottom-8 md:right-8 z-40 hidden flex-col items-center gap-2">
@@ -369,15 +372,17 @@
                     <!-- Mempelai Pria -->
                     <div class="md:col-span-5 flex flex-col items-center text-center reveal-left">
                         <div class="relative w-60 h-72 sm:w-64 sm:h-80 p-2.5 palembang-arch border-2 border-gold-400 bg-wine-950/60 shadow-2xl gold-border-glow mb-6 group">
-                            <img src="https://drive.google.com/thumbnail?id=1HasaliqmOQ6qcU4g8cGUxTXF1RHNuuIp&sz=w1000" 
-                                 onerror="this.src='https://placehold.co/600x750/6b0f22/d4af37?text=Rifki+Nurrohman'"
-                                 alt="Rifki Nurrohman, S. Tr. T" 
-                                 class="w-full h-full object-cover palembang-arch group-hover:scale-105 transition-transform duration-500">
+                            <div class="w-full h-full overflow-hidden palembang-arch">
+                                <img src="https://drive.google.com/thumbnail?id=1bOBusWbPGkM4LdAfP3yuS7hHiz5s7l2l&sz=w1000" 
+                                     onerror="this.src='https://placehold.co/600x750/6b0f22/d4af37?text=Rifki+Nurrohman'"
+                                     alt="Rifki Nurrohman, S. Tr. T" 
+                                     class="w-full h-full object-cover object-[50%_38%] -translate-y+10 group-hover:scale-105 group-hover:scale-[1.1] transition-transform duration-500">
+                            </div>
                             <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-gold-500 text-wine-950 text-xs font-bold px-4 py-1 rounded-full shadow-md uppercase tracking-wider">
                                 Mempelai Pria
                             </div>
                         </div>
-                        <h3 class="font-decorative text-2xl sm:text-3xl font-bold text-gold-300 mt-2">
+                        <h3 class="font-decorative text-base sm:text-lg lg:text-xl font-bold text-gold-300 mt-2 whitespace-nowrap">
                             Rifki Nurrohman, S. Tr. T
                         </h3>
                         <p class="text-gold-200/80 text-sm mt-2">Putra dari</p>
@@ -393,18 +398,20 @@
                         </div>
                     </div>
 
-                    <!-- Mempelai Wanita -->
+                    <!-- Mempelai Wanita (Posisi diturunkan agar kepala tidak terpotong dan sejajar dengan pria) -->
                     <div class="md:col-span-5 flex flex-col items-center text-center reveal-right">
                         <div class="relative w-60 h-72 sm:w-64 sm:h-80 p-2.5 palembang-arch border-2 border-gold-400 bg-wine-950/60 shadow-2xl gold-border-glow mb-6 group">
-                            <img src="https://drive.google.com/thumbnail?id=1BBLQNsBHP88Xc7uhrjuYIJ73qNDc7UfM&sz=w1000" 
-                                 onerror="this.src='https://placehold.co/600x750/6b0f22/d4af37?text=Tri+Novitara+Armaiti'"
-                                 alt="Tri Novitara Armaiti, A.Md.Kep" 
-                                 class="w-full h-full object-cover palembang-arch group-hover:scale-105 transition-transform duration-500">
+                            <div class="w-full h-full overflow-hidden palembang-arch">
+                                <img src="https://drive.google.com/thumbnail?id=1fm8mkbJQpjtX6QirKOF5tgbbbwAfNEz4&sz=w1000" 
+                                     onerror="this.src='https://placehold.co/600x750/6b0f22/d4af37?text=Tri+Novitara+Armaiti'"
+                                     alt="Tri Novitara Armaiti, A.Md.Kep" 
+                                     class="w-full h-full object-cover object-[50%_40%] -translate-y+18 scale-230 group-hover:scale-[1.1] transition-transform duration-500">
+                            </div>
                             <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-gold-500 text-wine-950 text-xs font-bold px-4 py-1 rounded-full shadow-md uppercase tracking-wider">
                                 Mempelai Wanita
                             </div>
                         </div>
-                        <h3 class="font-decorative text-2xl sm:text-3xl font-bold text-gold-300 mt-2">
+                        <h3 class="font-decorative text-base sm:text-lg lg:text-xl font-bold text-gold-300 mt-2 whitespace-nowrap">
                             Tri Novitara Armaiti, A.Md.Kep
                         </h3>
                         <p class="text-gold-200/80 text-sm mt-2">Putri dari</p>
@@ -504,56 +511,7 @@
                     </p>
                 </div>
 
-                <!-- KARTU 1: TASYAKUR PERNIKAHAN (BANJAR) -->
-                <div class="mb-12 bg-wine-950/85 border-2 border-gold-500/50 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-md reveal">
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                        <div class="lg:col-span-6 text-center lg:text-left">
-                            <span class="inline-block bg-gold-500/20 border border-gold-400 text-gold-300 text-xs font-semibold px-4 py-1 rounded-full uppercase tracking-wider mb-3">
-                                Acara Pertama
-                            </span>
-                            <h3 class="font-decorative text-2xl sm:text-3xl font-bold text-gold-300 mb-4">
-                                Tasyakur Pernikahan
-                            </h3>
-                            <div class="space-y-3 text-gold-100/90 text-sm sm:text-base">
-                                <div class="flex items-center justify-center lg:justify-start gap-3">
-                                    <i class="fa-regular fa-calendar text-gold-400 w-5"></i>
-                                    <span class="font-semibold">Kamis, 10 Desember 2026</span>
-                                </div>
-                                <div class="flex items-center justify-center lg:justify-start gap-3">
-                                    <i class="fa-regular fa-clock text-gold-400 w-5"></i>
-                                    <span>Pukul 08.00 WIB - Selesai</span>
-                                </div>
-                                <div class="flex items-start justify-center lg:justify-start gap-3">
-                                    <i class="fa-solid fa-location-dot text-gold-400 w-5 mt-1"></i>
-                                    <span>
-                                        <strong class="text-white block">Kediaman Mempelai Pria</strong>
-                                        Lingk. Lemburbalong RT.02/RW.06, Pataruman, Pataruman, Kota Banjar
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div class="mt-6 flex flex-wrap justify-center lg:justify-start gap-3">
-                                <a href="https://maps.app.goo.gl/fWAAsLqw3UVtDA5eA" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-gradient-to-r from-gold-500 to-gold-400 text-wine-950 font-semibold text-sm px-6 py-3 rounded-full shadow-lg hover:scale-105 transition">
-                                    <i class="fa-solid fa-map-location-dot"></i>
-                                    <span>Petunjuk Arah (Google Maps)</span>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Interactive Embed Maps Tasyakur -->
-                        <div class="lg:col-span-6">
-                            <div class="rounded-2xl overflow-hidden border-2 border-gold-400/50 shadow-xl h-64 sm:h-72 bg-wine-900">
-                                <iframe 
-                                    title="Peta Lokasi Tasyakur Pernikahan"
-                                    src="https://maps.google.com/maps?q=Lemburbalong%20Pataruman%20Kota%20Banjar&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-                                    class="w-full h-full border-0" 
-                                    loading="lazy" 
-                                    referrerpolicy="no-referrer-when-downgrade">
-                                </iframe>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
 
                 <!-- KARTU 2: AKAD NIKAH & RESEPSI (BANDUNG) -->
                 <div class="bg-wine-950/85 border-2 border-gold-500/50 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-md reveal">
@@ -567,10 +525,10 @@
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                        <!-- Box Akad Nikah -->
+                        <!-- Box Akad Nikah (Ikon Jabatan Tangan) -->
                         <div class="bg-wine-900/60 border border-gold-400/40 rounded-2xl p-6 text-center hover:border-gold-400 transition">
                             <div class="w-12 h-12 mx-auto rounded-full bg-gold-500/20 border border-gold-400 flex items-center justify-center text-gold-300 mb-3">
-                                <i class="fa-solid fa-ring text-xl"></i>
+                                <i class="fa-solid fa-handshake text-xl"></i>
                             </div>
                             <h4 class="font-decorative text-xl font-bold text-gold-300 mb-2">Akad Nikah</h4>
                             <p class="text-white font-semibold text-sm sm:text-base mb-2">
@@ -582,10 +540,15 @@
                             </p>
                         </div>
 
-                        <!-- Box Resepsi -->
+                        <!-- Box Resepsi (Siluet Pasangan Pria & Wanita Berhijab) -->
                         <div class="bg-wine-900/60 border border-gold-400/40 rounded-2xl p-6 text-center hover:border-gold-400 transition">
                             <div class="w-12 h-12 mx-auto rounded-full bg-gold-500/20 border border-gold-400 flex items-center justify-center text-gold-300 mb-3">
-                                <i class="fa-solid fa-champagne-glasses text-xl"></i>
+                                <svg class="w-7 h-7 fill-current" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Siluet Pria (Kiri) -->
+                                    <path d="M22 14c-3.8 0-6.8 3-6.8 6.8 0 3.8 3 6.8 6.8 6.8s6.8-3 6.8-6.8c0-3.8-3-6.8-6.8-6.8zm-1.5-2.5h3c1.5 0 2.5.8 2.8 2h-8.6c.3-1.2 1.3-2 2.8-2zM11 46c0-7.2 4.5-13.5 11-13.5s11 6.3 11 13.5v4H11v-4z"/>
+                                    <!-- Siluet Wanita Berhijab (Kanan) -->
+                                    <path d="M43 13c-4.8 0-8.6 3.8-8.6 8.6 0 2.8 1.2 5.3 3.1 7-3.4 2.3-5.5 6.8-5.5 12.4v9h22v-9c0-5.6-2.1-10.1-5.5-12.4 1.9-1.7 3.1-4.2 3.1-7 0-4.8-3.8-8.6-8.6-8.6zm0 3.2c3 0 5.4 2.4 5.4 5.4s-2.4 5.4-5.4 5.4-5.4-2.4-5.4-5.4 2.4-5.4 5.4-5.4z"/>
+                                </svg>
                             </div>
                             <h4 class="font-decorative text-xl font-bold text-gold-300 mb-2">Resepsi Pernikahan</h4>
                             <p class="text-white font-semibold text-sm sm:text-base mb-2">
@@ -615,10 +578,64 @@
                             <span>Buka Petunjuk Arah Akad &amp; Resepsi</span>
                         </a>
                     </div>
+                    </div>
+
+                <!-- KARTU 1: TASYAKUR PERNIKAHAN (BANJAR) -->
+                <div class="mb-12 bg-wine-950/85 border-2 border-gold-500/50 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-md reveal">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-6 text-center lg:text-left">
+                            <span class="inline-block bg-gold-500/20 border border-gold-400 text-gold-300 text-xs font-semibold px-4 py-1 rounded-full uppercase tracking-wider mb-3">
+                                Acara Keluarga dan Kerabat Mempelai Pria
+                            </span>
+                            <h3 class="font-decorative text-2xl sm:text-3xl font-bold text-gold-300 mb-4">
+                                Tasyakur Pernikahan
+                            </h3>
+                            <div class="space-y-3 text-gold-100/90 text-sm sm:text-base">
+                                <div class="flex items-center justify-center lg:justify-start gap-3">
+                                    <i class="fa-regular fa-calendar text-gold-400 w-5"></i>
+                                    <span class="font-semibold">Kamis, 10 Desember 2026</span>
+                                </div>
+                                <div class="flex items-center justify-center lg:justify-start gap-3">
+                                    <i class="fa-regular fa-clock text-gold-400 w-5"></i>
+                                    <span>Pukul 08.00 WIB - Selesai</span>
+                                </div>
+                                <div class="flex items-start justify-center lg:justify-start gap-3">
+                                    <i class="fa-solid fa-location-dot text-gold-400 w-5 mt-1"></i>
+                                    <span>
+                                        <strong class="text-white block">Kediaman Mempelai Pria</strong>
+                                        Lingk. Lemburbalong RT.02/RW.06, Pataruman, Pataruman, Kota Banjar
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 flex flex-wrap justify-center lg:justify-start gap-3">
+                                <a href="https://www.google.com/maps/place/Rumah+Bp.+Yayan/@-7.3772155,108.5455458,822m/data=!3m1!1e3!4m14!1m7!3m6!1s0x2e6f630026ab13f3:0x25ae37aeae647e0c!2sRumah+Bp.+Yayan!8m2!3d-7.3772208!4d108.5481207!16s%2Fg%2F11vrsl509c!3m5!1s0x2e6f630026ab13f3:0x25ae37aeae647e0c!8m2!3d-7.3772208!4d108.5481207!16s%2Fg%2F11vrsl509c?entry=ttu&g_ep=EgoyMDI2MTExMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-gradient-to-r from-gold-500 to-gold-400 text-wine-950 font-semibold text-sm px-6 py-3 rounded-full shadow-lg hover:scale-105 transition">
+                                    <i class="fa-solid fa-map-location-dot"></i>
+                                    <span>Petunjuk Arah (Google Maps)</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Interactive Embed Maps Tasyakur -->
+                        <div class="lg:col-span-6">
+                            <div class="rounded-2xl overflow-hidden border-2 border-gold-400/50 shadow-xl h-64 sm:h-72 bg-wine-900">
+                                <iframe 
+                                    title="Peta Lokasi Tasyakur Pernikahan"
+                                    src="https://maps.google.com/maps?q=-7.3772155,108.5455458&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                                    class="w-full h-full border-0" 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 </div>
 
             </div>
         </section>
+
 
         <!-- ================================================================= -->
         <!-- 7. VIDEO PREWEDDING & GALERI FOTO (LIGHTBOX)                      -->
@@ -627,35 +644,32 @@
             <div class="max-w-5xl mx-auto">
                 <div class="text-center mb-12 reveal">
                     <span class="text-wine-800 uppercase tracking-[0.25em] text-xs font-semibold">Momen Bahagia</span>
-                    <h2 class="font-decorative text-3xl sm:text-4xl font-bold text-wine-900 mt-2">Video &amp; Galeri Prewedding</h2>
-                    <p class="text-stone-600 text-sm mt-1">Klik foto untuk memperbesar tampilan</p>
+                    <h2 class="font-decorative text-3xl sm:text-4xl font-bold text-wine-900 mt-2">Prewedding &amp; Gallery</h2>
                 </div>
 
                 <!-- Video Prewedding dengan Thumbnail Khusus -->
-                <div class="max-w-3xl mx-auto mb-14 reveal">
-                    <div id="video-wrapper" class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-wine-800/80 aspect-video bg-wine-950 group">
+                <div class="mb-14 reveal">
+                    <div class="relative max-w-3xl mx-auto rounded-3xl overflow-hidden shadow-2xl border-4 border-wine-900 bg-wine-950 aspect-video group">
                         <!-- Thumbnail Overlay sebelum diputar -->
                         <div id="video-thumbnail-overlay" onclick="playPreweddingVideo()" class="absolute inset-0 z-10 cursor-pointer">
-                            <img src="https://drive.google.com/thumbnail?id=1RqA9ZD_wiEC4JDrQ4uS6QyQNZoFWjb1A&sz=w1600" 
-                                 onerror="this.src='https://placehold.co/1280x720/4a0816/d4af37?text=Prewedding+Video+Rifki+%26+Tara'"
-                                 alt="Thumbnail Video Prewedding Rifki dan Tara" 
+                            <img src="https://drive.google.com/thumbnail?id=1RqA9ZD_wiEC4JDrQ4uS6QyQNZoFWjb1A&sz=w1000" 
+                                 onerror="this.src='https://placehold.co/1280x720/4a0816/d4af37?text=Video+Prewedding+Rifki+%26+Tara'"
+                                 alt="Thumbnail Video Prewedding" 
                                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                            <div class="absolute inset-0 bg-wine-950/45 flex flex-col items-center justify-center">
+                            <div class="absolute inset-0 bg-wine-950/45 group-hover:bg-wine-950/30 transition flex flex-col items-center justify-center">
                                 <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gold-500/95 text-wine-950 flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
                                     <i class="fa-solid fa-play text-2xl sm:text-3xl ml-1"></i>
                                 </div>
-                                <span class="mt-3 text-white font-serif italic text-lg sm:text-xl tracking-wide drop-shadow">
-                                    Putar Video Prewedding
-                                </span>
+                                <span class="mt-3 text-white font-serif italic text-base sm:text-lg drop-shadow">Putar Video Prewedding</span>
                             </div>
                         </div>
-                        <!-- Iframe Google Drive Video Preview -->
-                        <iframe id="prewedding-iframe" class="w-full h-full hidden" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                        <!-- Iframe Google Drive Video -->
+                        <iframe id="prewedding-iframe" class="w-full h-full border-0 hidden" allow="autoplay; fullscreen" allowfullscreen></iframe>
                     </div>
                 </div>
 
-                <!-- Grid Galeri 8 Foto -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-5 reveal">
+                <!-- Grid Galeri 8 Foto Pasangan -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-5 reveal">
                     <!-- Foto 1 -->
                     <div onclick="openLightbox(0)" class="group relative aspect-[3/4] rounded-2xl overflow-hidden shadow-lg border-2 border-gold-500/30 cursor-pointer bg-wine-900">
                         <img src="https://drive.google.com/thumbnail?id=1jTpF_bc6DOVhpu_AWsCXe1nbnYMjIASj&sz=w1000" 
@@ -686,11 +700,11 @@
                         </div>
                     </div>
 
-                    <!-- Foto 4 -->
+                    <!-- Foto 4 (URL foto baru) -->
                     <div onclick="openLightbox(3)" class="group relative aspect-[3/4] rounded-2xl overflow-hidden shadow-lg border-2 border-gold-500/30 cursor-pointer bg-wine-900">
-                        <img src="https://drive.google.com/thumbnail?id=1Add9AqVE7ZY32PbOlCm06NzPw9sqv2L3&sz=w1000" 
+                        <img src="https://drive.google.com/thumbnail?id=1SRuOw5lsDI7C8fiMvUnuUX2UZDYsbrY1&sz=w1000" 
                              onerror="this.src='https://placehold.co/600x800/6b0f22/d4af37?text=Foto+4'"
-                             alt="Galeri Rifki & Tara 4" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                             alt="Galeri Rifki & Tara 4" class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-wine-950/0 group-hover:bg-wine-950/30 transition flex items-center justify-center">
                             <i class="fa-solid fa-magnifying-glass-plus text-white opacity-0 group-hover:opacity-100 text-2xl transition"></i>
                         </div>
@@ -716,11 +730,11 @@
                         </div>
                     </div>
 
-                    <!-- Foto 7 -->
+                    <!-- Foto 7 (URL foto baru) -->
                     <div onclick="openLightbox(6)" class="group relative aspect-[3/4] rounded-2xl overflow-hidden shadow-lg border-2 border-gold-500/30 cursor-pointer bg-wine-900">
-                        <img src="https://drive.google.com/thumbnail?id=1rRETioIbyyKVBNoyYwW-kxZEevWM0_xb&sz=w1000" 
+                        <img src="https://drive.google.com/thumbnail?id=17d8xZBAeifnfpJwxalLxxxulMbQBjQ57&sz=w1000" 
                              onerror="this.src='https://placehold.co/600x800/6b0f22/d4af37?text=Foto+7'"
-                             alt="Galeri Rifki & Tara 7" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                             alt="Galeri Rifki & Tara 7" class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-wine-950/0 group-hover:bg-wine-950/30 transition flex items-center justify-center">
                             <i class="fa-solid fa-magnifying-glass-plus text-white opacity-0 group-hover:opacity-100 text-2xl transition"></i>
                         </div>
@@ -816,115 +830,452 @@
         <!-- ================================================================= -->
         <!-- 9. RSVP & KOLOM UCAPAN / DOA RESTU                                -->
         <!-- ================================================================= -->
-        <section id="rsvp" class="py-20 px-5 songket-pattern-light border-t-4 border-gold-500/40">
-            <div class="max-w-4xl mx-auto">
-                <div class="text-center mb-12 reveal">
-                    <span class="text-wine-800 uppercase tracking-[0.25em] text-xs font-semibold">Konfirmasi &amp; Doa</span>
-                    <h2 class="font-decorative text-3xl sm:text-4xl font-bold text-wine-900 mt-2">RSVP &amp; Ucapan Restu</h2>
-                    <p class="text-stone-600 text-sm mt-2">Konfirmasikan kehadiran Anda serta tuliskan doa restu untuk kedua mempelai</p>
-                </div>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSVP & Ucapan Restu - Rifki & Tara</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts untuk Tema Elegan -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    <!-- Form RSVP & Ucapan -->
-                    <div class="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-gold-500/40 reveal">
-                        <form id="rsvp-form" onsubmit="handleRSVPSubmit(event)" class="space-y-4">
-                            <div>
-                                <label class="block text-xs font-semibold text-wine-900 uppercase tracking-wider mb-1.5">Nama Lengkap *</label>
-                                <input type="text" id="input-nama" required placeholder="Masukkan nama Anda" class="w-full px-4 py-3 rounded-xl border border-stone-300 focus:border-wine-800 focus:ring-2 focus:ring-wine-800/20 outline-none text-sm transition">
-                            </div>
+    <!-- Konfigurasi Warna Kustom Tailwind (Wine & Gold) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        decorative: ['"Cinzel Decorative"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        wine: {
+                            700: '#6b1d2f',
+                            800: '#541423',
+                            900: '#3d0c18',
+                        },
+                        gold: {
+                            100: '#fbf5e6',
+                            200: '#f5e6c4',
+                            300: '#ebd094',
+                            400: '#dfb660',
+                            500: '#d49d35',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #faf8f5;
+        }
+        .songket-pattern-light {
+            background-color: #fcfaf7;
+            background-image: radial-gradient(#d49d35 0.6px, transparent 0.6px), radial-gradient(#d49d35 0.6px, #fcfaf7 0.6px);
+            background-size: 24px 24px;
+            background-position: 0 0, 12px 12px;
+        }
+        /* Custom Scrollbar untuk Daftar Ucapan */
+        #wishes-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        #wishes-list::-webkit-scrollbar-track {
+            background: #f1ede6;
+            border-radius: 10px;
+        }
+        #wishes-list::-webkit-scrollbar-thumb {
+            background: #d49d35;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Toast Notification (Pengganti alert() yang lebih modern) -->
+    <div id="toast-notification" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div id="toast-box" class="bg-wine-900 text-gold-100 px-5 py-3.5 rounded-2xl shadow-2xl border border-gold-400/50 flex items-center gap-3 text-sm font-medium">
+            <i id="toast-icon" class="fa-solid fa-circle-check text-gold-300 text-lg"></i>
+            <span id="toast-message">Pesan berhasil dikirim!</span>
+        </div>
+    </div>
+
+    <!-- SECTION RSVP & UCAPAN RESTU -->
+    <section id="rsvp" class="py-20 px-5 songket-pattern-light border-t-4 border-gold-500/40 min-h-screen">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12 reveal">
+                <span class="text-wine-800 uppercase tracking-[0.25em] text-xs font-semibold">Konfirmasi &amp; Doa</span>
+                <h2 class="font-decorative text-3xl sm:text-4xl font-bold text-wine-900 mt-2">RSVP &amp; Ucapan Restu</h2>
+                <p class="text-stone-600 text-sm mt-2">Konfirmasikan kehadiran Anda serta tuliskan doa restu untuk kedua mempelai</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Form RSVP & Ucapan -->
+                <div class="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-gold-500/40 reveal">
+                    <form id="rsvp-form" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-wine-900 uppercase tracking-wider mb-1.5">Nama Lengkap *</label>
+                            <input type="text" id="input-nama" required placeholder="Masukkan nama Anda" class="w-full px-4 py-3 rounded-xl border border-stone-300 focus:border-wine-800 focus:ring-2 focus:ring-wine-800/20 outline-none text-sm transition">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-wine-900 uppercase tracking-wider mb-1.5">Acara yang Dihadiri *</label>
+                            <select id="input-acara" class="w-full px-4 py-3 rounded-xl border border-stone-300 focus:border-wine-800 focus:ring-2 focus:ring-wine-800/20 outline-none text-sm bg-white transition">
+                                <option value="Akad & Resepsi (Bandung - 12 Des)">Akad &amp; Resepsi (Bandung - 12 Des 2026)</option>
+                                <option value="Tasyakur Pernikahan (Banjar - 10 Des)">Tasyakur Pernikahan (Banjar - 10 Des 2026)</option>
+                                <option value="Kedua Acara">Hadir di Kedua Acara</option>
+                            </select>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
                             <div>
-                                <label class="block text-xs font-semibold text-wine-900 uppercase tracking-wider mb-1.5">Acara yang Dihadiri *</label>
-                                <select id="input-acara" class="w-full px-4 py-3 rounded-xl border border-stone-300 focus:border-wine-800 focus:ring-2 focus:ring-wine-800/20 outline-none text-sm bg-white transition">
-                                    <option value="Akad & Resepsi (Bandung - 12 Des)">Akad &amp; Resepsi (Bandung - 12 Des 2026)</option>
-                                    <option value="Tasyakur Pernikahan (Banjar - 10 Des)">Tasyakur Pernikahan (Banjar - 10 Des 2026)</option>
-                                    <option value="Kedua Acara">Hadir di Kedua Acara</option>
+                                <label class="block text-xs font-semibold text-wine-900 uppercase tracking-wider mb-1.5">Kehadiran *</label>
+                                <select id="input-kehadiran" class="w-full px-3 py-3 rounded-xl border border-stone-300 focus:border-wine-800 outline-none text-sm bg-white transition">
+                                    <option value="Hadir">Hadir</option>
+                                    <option value="Tidak Hadir">Berhalangan Hadir</option>
                                 </select>
                             </div>
-
-                            <div class="grid grid-cols-2 gap-3">
-                                <div>
-                                    <label class="block text-xs font-semibold text-wine-900 uppercase tracking-wider mb-1.5">Kehadiran *</label>
-                                    <select id="input-kehadiran" onchange="toggleGuestCount()" class="w-full px-3 py-3 rounded-xl border border-stone-300 focus:border-wine-800 outline-none text-sm bg-white transition">
-                                        <option value="Hadir">Hadir</option>
-                                        <option value="Tidak Hadir">Maaf, Berhalangan</option>
-                                    </select>
-                                </div>
-                                <div id="guest-count-wrapper">
-                                    <label class="block text-xs font-semibold text-wine-900 uppercase tracking-wider mb-1.5">Jumlah Tamu</label>
-                                    <select id="input-jumlah" class="w-full px-3 py-3 rounded-xl border border-stone-300 focus:border-wine-800 outline-none text-sm bg-white transition">
-                                        <option value="1 Orang">1 Orang</option>
-                                        <option value="2 Orang" selected>2 Orang</option>
-                                        <option value="3 Orang">3 Orang</option>
-                                        <option value="4 Orang">4 Orang</option>
-                                    </select>
-                                </div>
+                            <div id="guest-count-wrapper">
+                                <label class="block text-xs font-semibold text-wine-900 uppercase tracking-wider mb-1.5">Jumlah Tamu</label>
+                                <select id="input-jumlah" class="w-full px-3 py-3 rounded-xl border border-stone-300 focus:border-wine-800 outline-none text-sm bg-white transition">
+                                    <option value="1 Orang">1 Orang</option>
+                                    <option value="2 Orang" selected>2 Orang</option>
+                                    <option value="3 Orang">3 Orang</option>
+                                    <option value="4 Orang">4 Orang</option>
+                                </select>
                             </div>
+                        </div>
 
-                            <div>
-                                <label class="block text-xs font-semibold text-wine-900 uppercase tracking-wider mb-1.5">Ucapan &amp; Doa Restu *</label>
-                                <textarea id="input-ucapan" rows="4" required placeholder="Tuliskan ucapan selamat & doa terbaik untuk Rifki & Tara..." class="w-full px-4 py-3 rounded-xl border border-stone-300 focus:border-wine-800 focus:ring-2 focus:ring-wine-800/20 outline-none text-sm transition"></textarea>
-                            </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-wine-900 uppercase tracking-wider mb-1.5">Ucapan &amp; Doa Restu</label>
+                            <textarea id="input-ucapan" placeholder="Tuliskan ucapan selamat & doa terbaik untuk Rifki & Tara..." class="w-full px-4 py-3 rounded-xl border border-stone-300 focus:border-wine-800 focus:ring-2 focus:ring-wine-800/20 outline-none text-sm transition"></textarea>
+                        </div>
 
-                            <button type="submit" class="w-full bg-gradient-to-r from-wine-900 to-wine-800 hover:from-wine-800 hover:to-wine-700 text-gold-200 font-semibold py-3.5 px-6 rounded-xl shadow-lg transition flex items-center justify-center gap-2 cursor-pointer">
-                                <i class="fa-solid fa-paper-plane"></i>
-                                <span>Kirim Konfirmasi &amp; Ucapan</span>
-                            </button>
-                        </form>
+                        <button type="submit" id="btn-submit" class="w-full bg-gradient-to-r from-wine-900 to-wine-800 hover:from-wine-800 hover:to-wine-700 text-gold-200 font-semibold py-3.5 px-6 rounded-xl shadow-lg transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed">
+                            <i id="btn-icon" class="fa-solid fa-paper-plane"></i>
+                            <span id="btn-text">Kirim Konfirmasi &amp; Ucapan</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Daftar Ucapan & Statistik -->
+                <div class="lg:col-span-7 reveal">
+                    <!-- Statistik Kehadiran -->
+                    <div class="grid grid-cols-2 gap-4 mb-5">
+                        <div class="bg-wine-900 text-white rounded-2xl p-4 text-center shadow-md border border-gold-400/40">
+                            <span id="stat-hadir" class="block font-decorative text-2xl font-bold text-gold-300">0</span>
+                            <span class="text-xs text-gold-100/80">Konfirmasi Hadir</span>
+                        </div>
+                        <div class="bg-white text-wine-900 rounded-2xl p-4 text-center shadow-md border border-gold-500/40">
+                            <span id="stat-ucapan" class="block font-decorative text-2xl font-bold text-wine-800">0</span>
+                            <span class="text-xs text-stone-500">Total Ucapan &amp; Doa</span>
+                        </div>
                     </div>
 
-                    <!-- Daftar Ucapan & Statistik -->
-                    <div class="lg:col-span-7 reveal">
-                        <!-- Statistik Kehadiran -->
-                        <div class="grid grid-cols-2 gap-4 mb-5">
-                            <div class="bg-wine-900 text-white rounded-2xl p-4 text-center shadow-md border border-gold-400/40">
-                                <span id="stat-hadir" class="block font-decorative text-2xl font-bold text-gold-300">2</span>
-                                <span class="text-xs text-gold-100/80">Konfirmasi Hadir</span>
-                            </div>
-                            <div class="bg-white text-wine-900 rounded-2xl p-4 text-center shadow-md border border-gold-500/40">
-                                <span id="stat-ucapan" class="block font-decorative text-2xl font-bold text-wine-800">2</span>
-                                <span class="text-xs text-stone-500">Total Ucapan &amp; Doa</span>
-                            </div>
-                        </div>
+                    <!-- Status Koneksi Firestore -->
+                    <div id="db-status" class="text-xs text-stone-500 mb-3 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+                        <span>Menghubungkan ke database ucapan...</span>
+                    </div>
 
-                        <!-- Kotak Feed Ucapan -->
-                        <div id="wishes-list" class="space-y-4 max-h-[460px] overflow-y-auto pr-1">
-                            <!-- Default Ucapan 1 -->
-                            <div class="bg-white rounded-2xl p-5 shadow-md border border-gold-500/30">
-                                <div class="flex items-start justify-between gap-2">
-                                    <div>
-                                        <h4 class="font-bold text-wine-900 text-sm sm:text-base">Keluarga Besar Bandung</h4>
-                                        <span class="text-[11px] text-stone-400">Akad &amp; Resepsi • 2 Orang</span>
-                                    </div>
-                                    <span class="text-[11px] font-semibold bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-full">
-                                        <i class="fa-solid fa-check mr-1"></i>Hadir
-                                    </span>
-                                </div>
-                                <p class="text-stone-700 text-sm mt-3 leading-relaxed">
-                                    Barakallahu lakuma wa baraka ‘alaikuma wa jama’a bainakuma fi khair. Selamat menempuh hidup baru Rifki dan Tara, semoga menjadi keluarga yang sakinah, mawaddah, warahmah. #KITAselamanya
-                                </p>
-                            </div>
-
-                            <!-- Default Ucapan 2 -->
-                            <div class="bg-white rounded-2xl p-5 shadow-md border border-gold-500/30">
-                                <div class="flex items-start justify-between gap-2">
-                                    <div>
-                                        <h4 class="font-bold text-wine-900 text-sm sm:text-base">Rekan Sejawat &amp; Sahabat</h4>
-                                        <span class="text-[11px] text-stone-400">Tasyakur Pernikahan • 2 Orang</span>
-                                    </div>
-                                    <span class="text-[11px] font-semibold bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-full">
-                                        <i class="fa-solid fa-check mr-1"></i>Hadir
-                                    </span>
-                                </div>
-                                <p class="text-stone-700 text-sm mt-3 leading-relaxed">
-                                    MasyaAllah lancar sampai hari H ya Rifki &amp; Tara! Turut berbahagia atas pernikahan kalian. Semoga selalu diberkahi kebahagiaan dunia akhirat.
-                                </p>
-                            </div>
-                        </div>
+                    <!-- Kotak Feed Ucapan -->
+                    <div id="wishes-list" class="space-y-4 max-h-[460px] overflow-y-auto pr-1">
+                        <!-- Data ucapan dari Firestore akan dirender di sini secara otomatis -->
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
+
+    <!-- SCRIPT INTEGRASI FIREBASE FIRESTORE -->
+    <script type="module">
+        // 1. Import SDK Firebase v11 (Modular)
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { 
+            getFirestore, 
+            collection, 
+            addDoc,  
+            onSnapshot, 
+            query, 
+            orderBy, 
+            serverTimestamp 
+        } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+
+        // =========================================================================
+        // 2. KONFIGURASI FIREBASE ANDA (GANTI DENGAN MILIK PROYEK FIREBASE ANDA)
+        // Dapatkan di: Firebase Console > Project Settings > General > Your apps
+        // =========================================================================
+        const firebaseConfig = {
+            apiKey: "AIzaSyACQqLEWjj6p2CT5Un_8X_rYQ0YlUPFoUE",
+            authDomain: "website-undangan-9d745.firebaseapp.com",
+            projectId: "website-undangan-9d745",
+            storageBucket: "website-undangan-9d745.firebasestorage.app",
+            messagingSenderId: "828243682934",
+            appId: "1:828243682934:web:51fe10d43782eefc3ce157",
+            measurementId: "G-08B371SJZM"
+        };
+
+        // Inisialisasi Firebase & Firestore
+        let db;
+        let rsvpCollection;
+        const isConfigured = firebaseConfig.apiKey !== "GANTI_DENGAN_API_KEY_ANDA";
+
+        // Data bawaan (fallback jika konfigurasi Firebase belum diisi)
+        const defaultWishes = [
+            {
+                nama: "Keluarga Besar Bandung",
+                acara: "Akad & Resepsi (Bandung - 12 Des)",
+                kehadiran: "Hadir",
+                jumlah: "2 Orang",
+                ucapan: "Barakallahu lakuma wa baraka ‘alaikuma wa jama’a bainakuma fi khair. Selamat menempuh hidup baru Rifki dan Tara, semoga menjadi keluarga yang sakinah, mawaddah, warahmah. #KITAselamanya",
+                createdAt: "Baru saja"
+            },
+            {
+                nama: "Rekan Sejawat & Sahabat",
+                acara: "Tasyakur Pernikahan (Banjar - 10 Des)",
+                kehadiran: "Hadir",
+                jumlah: "2 Orang",
+                ucapan: "MasyaAllah lancar sampai hari H ya Rifki & Tara! Turut berbahagia atas pernikahan kalian. Semoga selalu diberkahi kebahagiaan dunia akhirat.",
+                createdAt: "Baru saja"
+            }
+        ];
+
+        // Elemen DOM
+        const form = document.getElementById('rsvp-form');
+        const inputKehadiran = document.getElementById('input-kehadiran');
+        const guestCountWrapper = document.getElementById('guest-count-wrapper');
+        const wishesList = document.getElementById('wishes-list');
+        const statHadir = document.getElementById('stat-hadir');
+        const statUcapan = document.getElementById('stat-ucapan');
+        const dbStatus = document.getElementById('db-status');
+
+        // Fungsi Helper: Mencegah XSS (Sanitasi HTML)
+        function escapeHTML(str) {
+            if (!str) return '';
+            return str.replace(/[&<>'"]/g, tag => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                "'": '&#39;',
+                '"': '&quot;'
+            }[tag]));
+        }
+
+        // Fungsi Helper: Format Waktu Relatif dari Timestamp Firestore
+        function formatTimeAgo(timestamp) {
+            if (!timestamp || !timestamp.toDate) return 'Baru saja';
+            const date = timestamp.toDate();
+            const seconds = Math.floor((new Date() - date) / 1000);
+
+            if (seconds < 60) return 'Baru saja';
+            const minutes = Math.floor(seconds / 60);
+            if (minutes < 60) return `${minutes} menit yang lalu`;
+            const hours = Math.floor(minutes / 60);
+            if (hours < 24) return `${hours} jam yang lalu`;
+            const days = Math.floor(hours / 24);
+            if (days < 7) return `${days} hari yang lalu`;
+            
+            return date.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' });
+        }
+
+        // Fungsi Helper: Notifikasi Toast
+        function showToast(message, isError = false) {
+            const toast = document.getElementById('toast-notification');
+            const toastBox = document.getElementById('toast-box');
+            const toastIcon = document.getElementById('toast-icon');
+            const toastMessage = document.getElementById('toast-message');
+
+            toastMessage.textContent = message;
+            if (isError) {
+                toastBox.className = "bg-red-900 text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-red-400/50 flex items-center gap-3 text-sm font-medium";
+                toastIcon.className = "fa-solid fa-circle-exclamation text-red-300 text-lg";
+            } else {
+                toastBox.className = "bg-wine-900 text-gold-100 px-5 py-3.5 rounded-2xl shadow-2xl border border-gold-400/50 flex items-center gap-3 text-sm font-medium";
+                toastIcon.className = "fa-solid fa-circle-check text-gold-300 text-lg";
+            }
+
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3500);
+        }
+
+        // Toggle Jumlah Tamu jika memilih "Tidak Hadir"
+        inputKehadiran.addEventListener('change', () => {
+            if (inputKehadiran.value === 'Tidak Hadir') {
+                guestCountWrapper.style.opacity = '0.4';
+                document.getElementById('input-jumlah').disabled = true;
+            } else {
+                guestCountWrapper.style.opacity = '1';
+                document.getElementById('input-jumlah').disabled = false;
+            }
+        });
+
+        // Fungsi Render Kartu Ucapan ke dalam DOM
+        function renderWishes(dataList) {
+            wishesList.innerHTML = '';
+            let totalHadir = 0;
+
+            dataList.forEach(item => {
+                const isHadir = item.kehadiran === 'Hadir';
+                if (isHadir) totalHadir++;
+
+                const badgeHTML = isHadir
+                    ? `<span class="text-[11px] font-semibold bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-full shrink-0">
+                           <i class="fa-solid fa-check mr-1"></i>Hadir
+                       </span>`
+                    : `<span class="text-[11px] font-semibold bg-rose-100 text-rose-800 px-2.5 py-0.5 rounded-full shrink-0">
+                           <i class="fa-solid fa-xmark mr-1"></i>Berhalangan
+                       </span>`;
+
+                const subInfo = isHadir 
+                    ? `${escapeHTML(item.acara)} • ${escapeHTML(item.jumlah)}`
+                    : `${escapeHTML(item.acara)}`;
+
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-2xl p-5 shadow-md border border-gold-500/30 transition hover:shadow-lg";
+                card.innerHTML = `
+                    <div class="flex items-start justify-between gap-2">
+                        <div>
+                            <h4 class="font-bold text-wine-900 text-sm sm:text-base">${escapeHTML(item.nama)}</h4>
+                            <span class="text-[11px] text-stone-400 block">${subInfo}</span>
+                        </div>
+                        ${badgeHTML}
+                    </div>
+                    <p class="text-stone-700 text-sm mt-3 leading-relaxed whitespace-pre-line">${escapeHTML(item.ucapan)}</p>
+                    <div class="mt-3 pt-2 border-t border-stone-100 flex items-center justify-end">
+                        <span class="text-[10px] text-stone-400"><i class="fa-regular fa-clock mr-1"></i>${item.createdAt || formatTimeAgo(item.createdAt)}</span>
+                    </div>
+                `;
+                wishesList.appendChild(card);
+            });
+
+            // Update Angka Statistik
+            statHadir.textContent = totalHadir;
+            statUcapan.textContent = dataList.length;
+        }
+
+        // 3. Koneksi & Listener Real-Time Firestore
+        if (isConfigured) {
+            try {
+                const app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                // Nama koleksi di Firestore: "rsvp_ucapan"
+                rsvpCollection = collection(db, "rsvp_ucapan");
+
+                // Query mengurutkan dari ucapan terbaru
+                const q = query(rsvpCollection, orderBy("createdAt", "desc"));
+
+                // Mendengarkan perubahan data secara real-time
+                onSnapshot(q, (snapshot) => {
+                    dbStatus.innerHTML = `
+                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                        <span class="text-emerald-700 font-medium">Terhubung secara real-time</span>
+                    `;
+
+                    const wishesData = [];
+                    snapshot.forEach((doc) => {
+                        wishesData.push({ id: doc.id, ...doc.data() });
+                    });
+
+                    // Jika database masih kosong, tampilkan ucapan default
+                    if (wishesData.length === 0) {
+                        renderWishes(defaultWishes);
+                    } else {
+                        renderWishes(wishesData);
+                    }
+                }, (error) => {
+                    console.error("Error membaca Firestore:", error);
+                    dbStatus.innerHTML = `
+                        <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                        <span class="text-red-600">Gagal memuat data (Periksa Rules Firestore)</span>
+                    `;
+                    renderWishes(defaultWishes);
+                });
+
+            } catch (err) {
+                console.error("Inisialisasi Firebase gagal:", err);
+                renderWishes(defaultWishes);
+            }
+        } else {
+            // Mode Preview jika firebaseConfig belum diisi
+            dbStatus.innerHTML = `
+                <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                <span class="text-amber-700">Mode Simulasi (Isi <b>firebaseConfig</b> di kode untuk menyimpan ke Firestore)</span>
+            `;
+            renderWishes(defaultWishes);
+        }
+
+        // 4. Handler Submit Form ke Firestore
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const btnSubmit = document.getElementById('btn-submit');
+            const btnText = document.getElementById('btn-text');
+            const btnIcon = document.getElementById('btn-icon');
+
+            const nama = document.getElementById('input-nama').value.trim();
+            const acara = document.getElementById('input-acara').value;
+            const kehadiran = document.getElementById('input-kehadiran').value;
+            const jumlah = kehadiran === 'Hadir' ? document.getElementById('input-jumlah').value : '-';
+            const ucapan = document.getElementById('input-ucapan').value.trim();
+
+            if (!nama) return;
+
+            // Ubah status tombol menjadi loading
+            btnSubmit.disabled = true;
+            btnIcon.className = "fa-solid fa-spinner fa-spin";
+            btnText.textContent = "Mengirim...";
+
+            try {
+                if (isConfigured && rsvpCollection) {
+                    // Simpan dokumen baru ke koleksi "rsvp_ucapan" di Firestore
+                    await addDoc(rsvpCollection, {
+                        nama: nama,
+                        acara: acara,
+                        kehadiran: kehadiran,
+                        jumlah: jumlah,
+                        ucapan: ucapan,
+                        createdAt: serverTimestamp()
+                    });
+                    showToast("Terima kasih! Konfirmasi & ucapan Anda telah tersimpan.");
+                } else {
+                    // Simulasi lokal jika firebaseConfig belum diisi
+                    defaultWishes.unshift({
+                        nama, acara, kehadiran, jumlah, ucapan, createdAt: "Baru saja (Lokal)"
+                    });
+                    renderWishes(defaultWishes);
+                    showToast("Tersimpan di mode simulasi! Isi firebaseConfig untuk menyimpan permanen.");
+                }
+
+                // Reset form setelah berhasil
+                form.reset();
+                guestCountWrapper.style.opacity = '1';
+                document.getElementById('input-jumlah').disabled = false;
+
+            } catch (error) {
+                console.error("Gagal menyimpan ke Firestore:", error);
+                showToast("Terjadi kesalahan saat mengirim ucapan. Coba lagi.", true);
+            } finally {
+                // Kembalikan tombol ke semula
+                btnSubmit.disabled = false;
+                btnIcon.className = "fa-solid fa-paper-plane";
+                btnText.textContent = "Kirim Konfirmasi & Ucapan";
+            }
+        });
+    </script>
+</body>
+</html>
+```
 
         <!-- ================================================================= -->
         <!-- 10. CLOSING & FOOTER                                              -->
@@ -946,9 +1297,9 @@
                     <p class="text-gold-300 text-sm font-medium tracking-widest mt-2">#KITAselamanya</p>
                 </div>
 
-                <!-- Ornamen Palembang Penutup -->
+                <!-- Ornamen Penutup -->
                 <div class="mt-10 pt-8 border-t border-gold-500/20 text-xs text-gold-200/60">
-                    <p>Digital Wedding Invitation • Nuansa Adat Palembang</p>
+                    <p>Digital Wedding Invitation • Rifki &amp; Tara</p>
                 </div>
             </div>
         </footer>
@@ -973,13 +1324,18 @@
         // 2. Fungsi Buka Undangan & Putar Musik
         const bgMusic = document.getElementById('bg-music');
         const musicIcon = document.getElementById('music-icon');
+        const gdriveFallback = document.getElementById('gdrive-audio-fallback');
         let isPlaying = false;
+        let usingIframeAudio = false;
 
         function openInvitation() {
             const cover = document.getElementById('cover-overlay');
             const mainContent = document.getElementById('main-content');
             const floatingMusic = document.getElementById('floating-music-container');
             const bottomNavbar = document.getElementById('bottom-navbar');
+
+            // Putar musik langsung pada user interaction (klik tombol)
+            playMusic();
 
             // Animasi slide-up cover
             cover.style.transform = 'translateY(-100%)';
@@ -995,27 +1351,35 @@
             floatingMusic.classList.add('flex');
             bottomNavbar.classList.remove('hidden');
 
-            // Putar musik otomatis saat tombol diklik
-            playMusic();
-
             // Jalankan trigger animasi scroll awal
             setTimeout(revealOnScroll, 150);
         }
 
         function playMusic() {
-            bgMusic.play().then(() => {
-                isPlaying = true;
-                musicIcon.classList.remove('paused-spin');
-            }).catch((err) => {
-                console.warn('Autoplay audio tertahan browser:', err);
-                isPlaying = false;
-                musicIcon.classList.add('paused-spin');
-            });
+            bgMusic.volume = 0.85;
+            const playPromise = bgMusic.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    isPlaying = true;
+                    usingIframeAudio = false;
+                    musicIcon.classList.remove('paused-spin');
+                }).catch(() => {
+                    // Fallback otomatis ke Google Drive Preview Player jika stream HTML5 diblokir
+                    gdriveFallback.innerHTML = '<iframe src="https://drive.google.com/file/d/1pbo2rnvg0olLGPvWvyMnFYiPz_kDFtEP/preview?autoplay=1" allow="autoplay" style="width:0;height:0;border:0;"></iframe>';
+                    isPlaying = true;
+                    usingIframeAudio = true;
+                    musicIcon.classList.remove('paused-spin');
+                });
+            }
         }
 
         function toggleMusic() {
             if (isPlaying) {
-                bgMusic.pause();
+                if (usingIframeAudio) {
+                    gdriveFallback.innerHTML = '';
+                } else {
+                    bgMusic.pause();
+                }
                 isPlaying = false;
                 musicIcon.classList.add('paused-spin');
                 showToast('Musik latar dijeda');
@@ -1032,10 +1396,14 @@
             
             overlay.classList.add('hidden');
             iframe.classList.remove('hidden');
-            iframe.src = "https://drive.google.com/file/d/1PMN8A2HjZOiPe-qb81EvaUqCh9bNvYrT/preview?autoplay=1";
+            iframe.src = "https://www.youtube.com/embed/X4cAVvJiWnY?autoplay=1&vq=hd1080&rel=0";
 
             if (isPlaying) {
-                bgMusic.pause();
+                if (usingIframeAudio) {
+                    gdriveFallback.innerHTML = '';
+                } else {
+                    bgMusic.pause();
+                }
                 isPlaying = false;
                 musicIcon.classList.add('paused-spin');
             }
@@ -1074,10 +1442,10 @@
             "https://drive.google.com/thumbnail?id=1jTpF_bc6DOVhpu_AWsCXe1nbnYMjIASj&sz=w1600",
             "https://drive.google.com/thumbnail?id=1vMrtaH6FuYM1YkzXPfOmH5jQtQ2Ozsc9&sz=w1600",
             "https://drive.google.com/thumbnail?id=19G9E4OJ0Mp-rdBgw5cpAaINhgCz4u_bB&sz=w1600",
-            "https://drive.google.com/thumbnail?id=1Add9AqVE7ZY32PbOlCm06NzPw9sqv2L3&sz=w1600",
+            "https://drive.google.com/thumbnail?id=1SRuOw5lsDI7C8fiMvUnuUX2UZDYsbrY1&sz=w1600",
             "https://drive.google.com/thumbnail?id=1ihld8VCEvuGBerDBjjsDEQFurStIEoQ_&sz=w1600",
             "https://drive.google.com/thumbnail?id=1NMnKNybHD9sDo7p3DK2uWUtC-x46oxbY&sz=w1600",
-            "https://drive.google.com/thumbnail?id=1rRETioIbyyKVBNoyYwW-kxZEevWM0_xb&sz=w1600",
+            "https://drive.google.com/thumbnail?id=17d8xZBAeifnfpJwxalLxxxulMbQBjQ57&sz=w1600",
             "https://drive.google.com/thumbnail?id=1ihld8VCEvuGBerDBjjsDEQFurStIEoQ_&sz=w1600"
         ];
         let currentLightboxIndex = 0;
